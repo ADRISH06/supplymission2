@@ -20,7 +20,7 @@ function setup() {
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
 
-	helicopterSprite=createSprite(width/2, 200, 10,10);
+	helicopterSprite=createSprite(width/2-200, 200, 10,10);
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
 
@@ -73,6 +73,10 @@ function draw() {
   Engine.update(engine);
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
+  packageSprite.x= helicopterSprite.position.x 
+
+
+
 
   drawSprites();
 }
@@ -81,7 +85,12 @@ function draw() {
 function keyPressed() {
 	if (keyCode === DOWN_ARROW) {
 	   Matter.Body.setStatic(packageBody, false);
-	 }
+	}else if(keyCode === RIGHT_ARROW){
+		helicopterSprite.x=helicopterSprite.x+20
+	 }else if(keyCode === LEFT_ARROW){
+	 helicopterSprite.x=helicopterSprite.x-20
+     }
+	 
    }
 
 
@@ -90,3 +99,5 @@ function keyPressed() {
 	boxBottomBody.display();
 	boxRightBody.display();
 }
+
+
